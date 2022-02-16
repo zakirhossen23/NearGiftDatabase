@@ -17,6 +17,7 @@ model Event {
   logolink    String
   wallet      String
   wallettype  String?
+  walletkey   String?
 
   @@map("events")
 }
