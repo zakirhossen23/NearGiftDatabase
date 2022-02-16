@@ -1,0 +1,52 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["dataProxy"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Event {
+  id          Int     @id @default(autoincrement())
+  title       String
+  description String
+  endDate     String
+  Goal        Int
+  logolink    String
+  wallet      String
+  wallettype  String?
+
+  @@map("events")
+}
+
+model Nftcryptopunk {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  Bidprice    Float
+  price       Float
+  type        String
+  image       String
+  eventid     Int
+
+  @@map("nftcryptopunks")
+}
+
+model tokenbid {
+  id       Int    @id @default(autoincrement())
+  Tokenid  Int
+  Date     String
+  UserName String
+  Bidprice Float
+}
+
+model eventcategories {
+  id      Int     @id @default(autoincrement())
+  eventid Int?
+  title   String?
+  price   Int?
+  amount  Int?
+  image   String?
+}
